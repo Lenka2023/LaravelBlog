@@ -64,18 +64,17 @@ class PostsController extends Controller
 
 							}
 
-						if($request->hasFile('file')){
+						
                             dd(000000000000000);
-							  $uplfile=$request->file('file');
+							  $uploadfile=$request->file('file');
 							  dd($request->file('file'));
-							  $request->file->storeAs('public/new','1.jpg');  
-							   
-							 $url=Storage::url('1.jpg'); 
-                             dd(000000000000000);
-							 return "<img src='".$url."'/>";
-							 }else{
-								return 'No file selected';
-								}
+							    
+							  $name=$uploadfile->getClientOriginalName; 
+                              $path='public/new';
+                              $uploadfile->move($path,$name);
+							
+							 
+							
 
 
 
