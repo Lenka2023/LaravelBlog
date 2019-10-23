@@ -18,6 +18,7 @@ $table->increments('id');
 $table->string('title');
 $table->text('intro');
 $table->text('body');
+$table->string('image')->nullable();
 $table->timestamps();
 });
 }

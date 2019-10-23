@@ -25,8 +25,12 @@
         </div>
 
         <div class="form-group">
-            <label for="intro">Body:</label>
+            <label for="body">Body:</label>
             <textarea class="form-control" type="text" name="body" id="body">{{$post->body}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">Image:</label>
+            <input class="btn btn-primary"  type="file" name="file" > <br/>
         </div>
         
 
