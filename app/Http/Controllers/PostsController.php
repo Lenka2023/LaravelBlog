@@ -21,7 +21,7 @@ class PostsController extends Controller
         dd($request->file('file'));
 					 $url=Storage::url('1.jpg'); 
                      //$url1=url('1.jpg'); 
-					 return "<img src='".$url."'/>";
+					 return "<img src='".$path."'/>";
                               
       // dd($url1);  
     	//$post= Post::find($id);
