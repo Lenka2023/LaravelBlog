@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label for="title">Title:</label>
-            <input class="form-control" type="text" name="title" id="title" value="{{$post->title}}">
+            <input class="form-control" type="text" name="title" id="title" value="{{{$post->title}}}">
         </div>
 
         <div class="form-group">
