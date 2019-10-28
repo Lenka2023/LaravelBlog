@@ -10,7 +10,7 @@
                 <p class="blog-post-meta">January 1, 2014 </p>
 
                 <p>
-                    {{$post->body}}
+                    {!!$post->body!!}
                 </p>
 
         </div><!-- /.blog-sidebar -->

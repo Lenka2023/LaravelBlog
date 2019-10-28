@@ -28,11 +28,20 @@
             <label for="body">Body:</label>
             <textarea class="form-control" type="text" name="body" id="body">{{$post->body}}</textarea>
         </div>
+        
         <div class="form-group">
             <label for="file">Image:</label>
             <input class="btn btn-primary"  type="file" name="file" > <br/>
         </div>
-        
+         <div class="form-group">
+            <label for="category_id">Category:</label>
+            <select class="form-control"  name="category_id" id="category_id">
+                <?php $selectedvalue=$post->category_id ?>
+              @foreach($cat as $key => $value) 
+              <option value="{{$value->id}}"{{$selectedvalue==$value['id'] ? 'selected="selected"':''}}>{{$value->name}}</option> 
+              @endforeach
+            </select>
+        </div>
 
         <div class="form-group">
             <button class="btn btn-primary" type="submit">Update</button>

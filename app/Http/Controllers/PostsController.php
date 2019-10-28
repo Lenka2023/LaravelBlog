@@ -9,6 +9,7 @@ use Auth;
 use App\User;
 use Storage;
 use Html;
+use App\Category;
 class PostsController extends Controller
 {
     public function index()
@@ -27,56 +28,49 @@ class PostsController extends Controller
     }
     public function create()
     {
-    	
-        return view("posts.create");
+    	$post=Post::all();
+      $cat=Category::all();
+        return view("posts.create", ['post'=>$post, 'cat'=>$cat]);
     }
 	 public function store( request $request)
     {
         
        
-       $title = $request->input('title');
-       //dd($title);
-       HTML::entities($title);
-      // $title=htmlentities($title);
-       $alias = $request->input('alias');
-       HTML::entities($alias);
-      // $alias=htmlentities($alias);
-       $intro = $request->input('intro');
-       HTML::entities($intro);
-      // $intro=htmlentities($intro);
-       $body = $request->input('body');
-       HTML::entities($body);
-      // $body=htmlentities($body);
-       //dd($title);
-        //$title=htmlentities($title);
       
-       /*foreach( $all as $item ) {
-       $item = htmlentities( $item );
-       dd($item);*/
   
         $this->validate(request(), [
            'title' => 'required|min:2',
             'alias' => 'required',
             'intro' => 'required',
-           'body' => 'required',
+            'body' => 'required',
+            'category_id' => 'required',
+           
 
         ]);
 
         Post::create(
-            request(array( 'title', 'alias', 'intro', 'body','image'))
+            request(array( 'title', 'alias', 'intro', 'body', 'category_id', 'image'))
         );
 
      return redirect('/');  
     }
 
-	    public function edit(Post $post)
+	    public function edit(Post $post, request $request)
     {
+$post->title=$request->input('title');
+$post->alias=$request->input('alias');
+$post->intro=$request->input('intro');
+$post->body=$request->input('body');
+$post->category_id=$request->input('category_id');
 
        // dd('edit');
 						$user= new User;
+            //$post=Post::find($id);
+            $cat=Category::all();
 						
 						 if($user = Auth::user()){
-							return view("posts.edit", compact('post'));
+
+							return view("posts.edit", ['post'=>$post, 'cat'=>$cat]);
                             
 						}else{
 							return redirect('/'); 
@@ -115,8 +109,9 @@ class PostsController extends Controller
             'alias' => 'required',
             'intro' => 'required',
             'body' => 'required',
+            'category_id' => 'required',
         ]);
-        $post->update(request(['title', 'alias', 'intro', 'body','image']));
+        $post->update(request(['title', 'alias', 'intro', 'body', 'category_id', 'image']));
         return redirect('/');
     }
     public function destroy(Post $post){

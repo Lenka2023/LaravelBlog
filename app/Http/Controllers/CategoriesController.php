@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Category;
 class CategoriesController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+       $cat=Category::all();
+        return view("posts.category", ['cat'=>$cat]);
     }
 
     /**
@@ -79,6 +80,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cat=Category::find($id);
+        $cat->delete();
+        return http_redirect()->route('category');
     }
 }
