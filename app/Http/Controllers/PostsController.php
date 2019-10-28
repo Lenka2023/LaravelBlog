@@ -9,7 +9,6 @@ use Auth;
 use App\User;
 use Storage;
 use Html;
-//use App\Http\Controllers\HTML;
 class PostsController extends Controller
 {
     public function index()
@@ -56,15 +55,15 @@ class PostsController extends Controller
        dd($item);*/
   
         $this->validate(request(), [
-           HTML::entities('title') => 'required|min:2',
+           'title' => 'required|min:2',
             'alias' => 'required',
             'intro' => 'required',
            'body' => 'required',
 
         ]);
-$request=request(array('title', 'alias', 'intro', 'body','image'));
+
         Post::create(
-            request(array( HTML::entities('title'), 'alias', 'intro', 'body','image'))
+            request(array( 'title', 'alias', 'intro', 'body','image'))
         );
 
      return redirect('/');  
