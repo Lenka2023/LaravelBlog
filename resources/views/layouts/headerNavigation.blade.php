@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="posts/create">Add post</a></li>
-                <!--<li><a href="posts/category">Categories</a></li>-->
+                <li><a href="{{route('category')}}">Categories</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

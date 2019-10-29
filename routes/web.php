@@ -12,9 +12,9 @@
 */
 
 Route::get('/', "PostsController@index");
-//Route::POST('posts/category/index',"CategoryController@index")->name('index.category');
+Route::get('posts/category/index',"CategoryController@index")->name('category');
 
-Route::DELETE('posts/category/delete/{id}',"CategoryController@delete")->name('delete.category');
+Route::DELETE('posts/category/delete/{id}',"CategoryController@destroy")->name('delete.category');
 Route::POST('posts/category/create',"CategoryController@store")->name('create.category');
 Route::get('posts/create',"PostsController@create");
 Route::get('/posts/{post}', "PostsController@show");

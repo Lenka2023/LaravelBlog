@@ -31,27 +31,27 @@
 <th>Create At</th>
 <th>Option</th>
 			</thead>
-<body>
-	<?php $no=1;?>
-	@foreach($cat as $key=>$value)
+<tbody>
+	<?php $no=1; ?>
+	@foreach($cat as $key => $value)
 	<tr>
-	<th>{{$no++}}</th>
-<th>{{$value->name}}</th>
-<th>$value->{{created_at}}</th>
-<th>{!!Form::open(['method'=>'DELETE','route'=>['delete.category',$value->id],'style'=>'display:inline'])!!}
-	{!!Form::button(['','type'=>submit,'class'=>'btn btn-danger btn-sm glyphicon glyphicon-trash'])!!}
+	<th>{{ $no++ }}</th>
+<th>{{ $value->name }}</th>
+<th>{{ $value->created_at }}</th>
+<th>{!!Form::open(['method' => 'DELETE', 'route' => ['delete.category', $value->id], 'style'=>'display:inline'])!!}
+	{!!Form::button('', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm glyphicon glyphicon-trash'])!!}
 	{!!Form::close()!!}
 </th>	
 	</tr>
 	@endforeach
-</body>
+</tbody>
 </table>
 </div>
 <div class="col-md-4">
-{!!Form::open(array(route=>''data-parsley-validate'->''))!!}
-{!!Form::lable('name','Name')!!}
-{!!Form::text('name',NULL,array(class=>'form-control',required=>'', 'maxlength'=>'225'))!!}
-{!!Form::submit('Add Category',array(class=>'btn btn-success btn-lg btn-block', style=>'margin-top:20px'))!!}
+{!!Form::open(['route'=>'create.category', 'data-parsley-validate' => ''])!!}
+<b>Name</b>
+{!!Form::text('name', NULL, array('class' => 'form-control', 'required' => '', 'maxlength' => '225' ))!!}
+{!!Form::submit('Add Category', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top:20px'))!!}
 {!!Form::close()!!}
 </div>
 </div>
