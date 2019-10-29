@@ -14,7 +14,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-      $posts = Post::all();
+      $posts = Post::orderBy('id', 'desc')->take(3)->get();
        return view('index', compact('posts'));
     }
     public function show(Post $post)

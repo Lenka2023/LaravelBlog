@@ -49,8 +49,8 @@
 </div>
 <div class="col-md-4">
 {!!Form::open(['route'=>'create.category', 'data-parsley-validate' => ''])!!}
-<b>Name</b>
-{!!Form::text('name', NULL, array('class' => 'form-control', 'required' => '', 'maxlength' => '225' ))!!}
+ {!!Form::label('name', 'Name')!!}
+{!!Form::text('name', NULL, array('class' => 'form-control', 'required' => '', 'maxlength' => '225', 'id'=>'name' ))!!}
 {!!Form::submit('Add Category', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top:20px'))!!}
 {!!Form::close()!!}
 </div>
