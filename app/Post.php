@@ -17,6 +17,6 @@ class Post extends Model
     	return $this->belongsTo('App\Category','category_id');
     }
 	public function lastPosts(){
-        return $this->hasMany('App\Category','category_id')->with('userprofile')->latest()->limit(3)->get()->reverse();
+        return $this->hasMany('App\Post','blogitem_id')->with('userprofile')->latest()->limit(3)->get()->reverse();
 }
 }
